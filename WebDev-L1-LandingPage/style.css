@@ -222,37 +222,62 @@ input {
   padding: 1.1rem 2rem;
 }
 
-/* Logo with Heart Accent */
+/* Logo with Pink Dot on 'i' and Pink 'x' */
 .logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.15rem;
   font-family: var(--font-heading);
-  font-size: 2.3rem;
+  font-size: 2.35rem;
   font-weight: 700;
-  color: var(--color-teal);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-decoration: none;
+  transition: transform 0.3s ease;
 }
 
-.logo-heart {
-  font-size: 1.15rem;
-  color: var(--color-pink);
-  margin-left: -0.15rem;
-  transform: translateY(-6px);
+.logo:hover {
+  transform: scale(1.04);
+}
+
+.logo-text {
+  display: inline-flex;
+  align-items: baseline;
+  position: relative;
+}
+
+.logo-dark {
+  color: #23140F;
+}
+
+.logo-i {
+  position: relative;
   display: inline-block;
-  animation: heartPulse 2.5s ease-in-out infinite;
+  color: #23140F;
 }
 
-@keyframes heartPulse {
+.logo-dot {
+  position: absolute;
+  top: 0.04em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.28em;
+  height: 0.28em;
+  background-color: #EF536E;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
 
-  0%,
-  100% {
-    transform: translateY(-6px) scale(1);
-  }
+.logo:hover .logo-dot {
+  transform: translateX(-50%) scale(1.22);
+}
 
-  50% {
-    transform: translateY(-6px) scale(1.18);
-  }
+.logo-pink {
+  color: #EF536E;
+}
+
+.footer-logo {
+  font-size: 2.5rem;
+  margin-bottom: 1.25rem;
 }
 
 /* Nav Links */
@@ -1723,9 +1748,15 @@ input {
    10. FOOTER (<footer>)
    ========================================================= */
 .footer {
-  background-color: var(--color-white);
+  background-color: #FFFFFF;
+  background-image: url('./assets/footer bg.png');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
   border-top: 1px solid var(--color-border);
-  padding: 4.5rem 0 2rem;
+  padding: 5.5rem 0 2.5rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .footer-top-grid {
@@ -1733,6 +1764,8 @@ input {
   grid-template-columns: 2fr 1fr 1fr 1.2fr;
   gap: 3rem;
   margin-bottom: 3.5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .footer-logo {
@@ -1772,26 +1805,60 @@ input {
 
 .social-links-row {
   display: flex;
+  align-items: center;
   gap: 0.85rem;
 }
 
 .social-circle-btn {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background-color: var(--color-teal-light);
-  color: var(--color-teal);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--transition);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .social-circle-btn:hover {
-  background-color: var(--color-teal);
-  color: var(--color-white);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-teal);
+  transform: translateY(-3px) scale(1.08);
+}
+
+.social-ig {
+  background-color: #FFE6EC;
+  color: #EF536E;
+}
+
+.social-ig:hover {
+  box-shadow: 0 8px 20px rgba(239, 83, 110, 0.38);
+}
+
+.social-fb {
+  background-color: #DDF7F2;
+  color: #169B8E;
+}
+
+.social-fb:hover {
+  box-shadow: 0 8px 20px rgba(22, 155, 142, 0.38);
+}
+
+.social-tw {
+  background-color: #FEF3D6;
+  color: #F59E0B;
+}
+
+.social-tw:hover {
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.38);
+}
+
+.social-yt {
+  background-color: #FFE6EC;
+  color: #EF536E;
+}
+
+.social-yt:hover {
+  box-shadow: 0 8px 20px rgba(239, 83, 110, 0.38);
 }
 
 .footer-bottom-bar {
@@ -1800,6 +1867,8 @@ input {
   text-align: center;
   font-size: 0.88rem;
   color: var(--color-gray);
+  position: relative;
+  z-index: 2;
 }
 
 /* ==========================================================
