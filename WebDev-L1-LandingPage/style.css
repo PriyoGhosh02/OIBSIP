@@ -1497,78 +1497,226 @@ input {
 /* ==========================================================
    9. NEWSLETTER BANNER ("Stay Sweet with Antix!")
    ========================================================= */
+.newsletter-section {
+  padding: 4.5rem 0;
+  position: relative;
+}
+
 .newsletter-card {
-  background: linear-gradient(135deg, var(--color-peach) 0%, #FFD699 100%);
-  border-radius: var(--radius-lg);
-  padding: 3.5rem 4rem;
+  background-color: #FDF4EB;
+  border: 1.5px solid #FDE4CF;
+  border-radius: 28px;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 3rem;
+  grid-template-columns: 1.18fr 0.82fr;
   align-items: center;
-  box-shadow: 0 15px 35px rgba(255, 179, 102, 0.25);
+  box-shadow: 0 15px 40px rgba(240, 160, 120, 0.12);
   position: relative;
   overflow: hidden;
 }
 
+.newsletter-content {
+  padding: 3.5rem 2rem 3.5rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.newsletter-tag-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  margin-bottom: 0.6rem;
+}
+
+.newsletter-tag {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #64748B;
+  text-transform: uppercase;
+}
+
+.newsletter-tag-line {
+  width: 32px;
+  height: 2px;
+  background-color: #EF536E;
+  border-radius: 100px;
+  margin-top: 0.35rem;
+}
+
 .newsletter-title {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-size: clamp(2.4rem, 3.8vw, 3.4rem);
   font-weight: 700;
-  color: var(--color-dark);
-  margin-bottom: 0.75rem;
+  color: #1E2229;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.85rem;
 }
 
 .newsletter-desc {
-  font-size: 1rem;
-  color: #55575A;
-  margin-bottom: 2rem;
-  max-width: 440px;
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  color: #5B6574;
+  line-height: 1.55;
+  margin-bottom: 1.75rem;
+  max-width: 480px;
 }
 
+/* Subscription Form Pill */
 .newsletter-form {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 0.75rem;
   background-color: var(--color-white);
   padding: 0.4rem 0.4rem 0.4rem 1.25rem;
-  border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-soft);
-  max-width: 480px;
+  border-radius: 9999px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  border: 1.5px solid #FDE4D4;
+  max-width: 490px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.newsletter-form:focus-within {
+  border-color: #EF536E;
+  box-shadow: 0 8px 25px rgba(239, 83, 110, 0.15);
 }
 
 .newsletter-input-box {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
   flex: 1;
 }
 
 .mail-icon {
-  color: var(--color-gray);
+  color: #94A3B8;
+  flex-shrink: 0;
 }
 
 .newsletter-input {
   width: 100%;
   background: transparent;
-  font-size: 0.95rem;
-  color: var(--color-dark);
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 0.96rem;
+  color: #1E2229;
 }
 
-.newsletter-visual {
-  display: flex;
-  justify-content: center;
+.newsletter-input::placeholder {
+  color: #94A3B8;
+}
+
+.newsletter-submit-btn {
+  background-color: #EF536E;
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  font-weight: 700;
+  padding: 0.85rem 1.85rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+  flex-shrink: 0;
+  box-shadow: 0 6px 18px rgba(239, 83, 110, 0.3);
+}
+
+.newsletter-submit-btn .btn-arrow-svg {
+  transition: transform 0.3s ease;
+  stroke: currentColor;
+}
+
+.newsletter-submit-btn:hover {
+  background-color: #E11D48;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(239, 83, 110, 0.45);
+}
+
+.newsletter-submit-btn:hover .btn-arrow-svg {
+  transform: translateX(4px);
+}
+
+/* 3 Feature Highlight Badges */
+.newsletter-perks-row {
+  margin-top: 1.85rem;
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.perk-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  transition: transform 0.3s ease;
+}
+
+.perk-item:hover {
+  transform: translateY(-2px);
+}
+
+.perk-icon-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.perk-icon-circle.icon-pink {
+  background-color: #FFE6EC;
+  color: #EF536E;
+}
+
+.perk-icon-circle.icon-mint {
+  background-color: #DDF7F2;
+  color: #169B8E;
+}
+
+.perk-icon-circle.icon-gold {
+  background-color: #FEF3D6;
+  color: #F59E0B;
+}
+
+.perk-label {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #2D3748;
+  white-space: nowrap;
+}
+
+/* Right Visual with newsletter.jpeg */
+.newsletter-visual {
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .newsletter-img {
-  max-height: 240px;
-  border-radius: 50%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-  transition: transform 0.4s ease;
+  object-position: center;
+  border-radius: 0;
+  box-shadow: none;
+  transition: transform 0.6s ease;
 }
 
 .newsletter-card:hover .newsletter-img {
-  transform: scale(1.05) rotate(4deg);
+  transform: scale(1.04);
 }
 
 /* ==========================================================
@@ -1803,18 +1951,19 @@ input {
 
   .newsletter-card {
     grid-template-columns: 1fr;
-    text-align: center;
-    padding: 3rem 2rem;
+  }
+
+  .newsletter-content {
+    padding: 3rem 2.5rem 2.5rem;
   }
 
   .newsletter-desc {
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 100%;
   }
 
-  .newsletter-form {
-    margin-left: auto;
-    margin-right: auto;
+  .newsletter-visual {
+    min-height: 320px;
+    max-height: 400px;
   }
 
   .footer-top-grid {
@@ -1950,14 +2099,44 @@ input {
     display: none !important;
   }
 
+  .newsletter-card {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter-content {
+    padding: 2.5rem 1.5rem 2rem;
+  }
+
+  .newsletter-title {
+    font-size: 2.2rem;
+  }
+
   .newsletter-form {
     flex-direction: column;
     padding: 0.75rem;
     border-radius: var(--radius-md);
+    gap: 0.75rem;
   }
 
-  .newsletter-form .btn {
+  .newsletter-input-box {
     width: 100%;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .newsletter-submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .newsletter-perks-row {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .newsletter-visual {
+    min-height: 260px;
+    max-height: 320px;
   }
 
   .footer-top-grid {
