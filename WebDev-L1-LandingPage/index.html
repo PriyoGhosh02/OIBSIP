@@ -78,7 +78,8 @@
             <span class="headline-teal">REPEAT!</span>
           </h1>
           <p class="hero-description">
-            Our ice creams are crafted with the finest ingredients to bring you moments of pure joy, one scoop at a time.
+            Our ice creams are crafted with the finest ingredients to bring you moments of pure joy, one scoop at a
+            time.
           </p>
           <div class="hero-cta-wrapper">
             <a href="#flavors" class="btn btn-pill-pink hero-btn">
@@ -92,7 +93,8 @@
             <!-- Badge 1: 100% Natural Ingredients -->
             <div class="hero-feature-item">
               <div class="feature-badge-icon icon-peach">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
                   <path d="M7 10v12l5-12 5 12V10"></path>
                   <circle cx="12" cy="7" r="5"></circle>
                 </svg>
@@ -106,7 +108,8 @@
             <!-- Badge 2: No Artificial Colors or Flavors -->
             <div class="hero-feature-item">
               <div class="feature-badge-icon icon-mint">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
                   <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
                   <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
                 </svg>
@@ -120,7 +123,8 @@
             <!-- Badge 3: Made With Love -->
             <div class="hero-feature-item">
               <div class="feature-badge-icon icon-yellow">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="12" cy="12" r="10"></circle>
                   <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
                   <line x1="9" y1="9" x2="9.01" y2="9"></line>
@@ -153,69 +157,95 @@
          ========================================================= -->
     <section id="flavors" class="section flavors-section">
       <div class="container">
-        <!-- Section Header with Top-Right Nav Controls -->
-        <div class="section-header-row">
-          <div class="section-title-group">
-            <span class="script-tag">Explore</span>
-            <h2 class="section-heading">Our Delicious Creations</h2>
+        <!-- Centered Section Header -->
+        <div class="flavors-header-centered">
+          <div class="explore-tag-wrapper">
+            <span class="explore-tag">EXPLORE</span>
+            <div class="explore-underline"></div>
           </div>
-          <p class="section-desc-text">
-            Step into our fresh and creamy world of deliciousness, dedicated to bringing you fresh, wholesome, and
-            delicious ice cream.
+          <h2 class="flavors-main-heading">
+            Our Delicious <span class="heading-pink">Creations</span>
+          </h2>
+          <p class="flavors-sub-heading">
+            From classic favorites to exciting new flavors,<br>there's something to make you smile.
           </p>
-          <!-- Top Right Carousel Arrows -->
-          <div class="slider-arrows">
-            <button class="slider-btn" aria-label="Previous Flavor">‹</button>
-            <button class="slider-btn" aria-label="Next Flavor">›</button>
-          </div>
         </div>
 
-        <!-- Circular Flavors Carousel Grid -->
-        <div class="flavors-grid">
-          <!-- Flavor 1 -->
-          <div class="flavor-card">
-            <div class="flavor-circle-halo halo-teal">
-              <img src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=400&q=80"
-                alt="Salted Caramel Ice Cream" class="flavor-img">
+        <!-- Carousel Wrapper with Left/Right Outer Navigation Buttons -->
+        <div class="flavors-carousel-wrapper">
+          <!-- Left Navigation Arrow Button -->
+          <button class="carousel-nav-btn nav-prev" aria-label="Previous Flavor">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
+          <!-- 5 Circular Flavors Grid -->
+          <div class="flavors-grid">
+            <!-- Flavor 1: Salted Caramel -->
+            <div class="flavor-card">
+              <div class="flavor-circle-halo">
+                <img src="./assets/flavor-1.jpeg" alt="Salted Caramel Ice Cream Scoop" class="flavor-img">
+              </div>
+              <h3 class="flavor-name">Salted Caramel</h3>
             </div>
-            <h3 class="flavor-name">Salted Caramel</h3>
+
+            <!-- Flavor 2: Classic Vanilla -->
+            <div class="flavor-card">
+              <div class="flavor-circle-halo">
+                <img src="./assets/flavor-2.jpeg" alt="Classic Vanilla Ice Cream Scoop" class="flavor-img">
+              </div>
+              <h3 class="flavor-name">Classic Vanilla</h3>
+            </div>
+
+            <!-- Flavor 3: Chocolate Fudge -->
+            <div class="flavor-card">
+              <div class="flavor-circle-halo">
+                <img src="./assets/flavor-3.jpeg" alt="Chocolate Fudge Ice Cream Scoop" class="flavor-img">
+              </div>
+              <h3 class="flavor-name">Chocolate Fudge</h3>
+            </div>
+
+            <!-- Flavor 4: Pistachio Bliss -->
+            <div class="flavor-card">
+              <div class="flavor-circle-halo">
+                <img src="./assets/flavor-4.jpeg" alt="Pistachio Bliss Ice Cream Scoop" class="flavor-img">
+              </div>
+              <h3 class="flavor-name">Pistachio Bliss</h3>
+            </div>
+
+            <!-- Flavor 5: Strawberry Burst -->
+            <div class="flavor-card">
+              <div class="flavor-circle-halo">
+                <img src="./assets/flavor-5.jpeg" alt="Strawberry Burst Ice Cream Scoop" class="flavor-img">
+              </div>
+              <h3 class="flavor-name">Strawberry Burst</h3>
+            </div>
           </div>
 
-          <!-- Flavor 2 -->
-          <div class="flavor-card">
-            <div class="flavor-circle-halo halo-peach">
-              <img src="https://images.unsplash.com/photo-1576506295286-5cda18df43e7?auto=format&fit=crop&w=400&q=80"
-                alt="Classic Vanilla Ice Cream" class="flavor-img">
-            </div>
-            <h3 class="flavor-name">Classic Vanilla</h3>
-          </div>
+          <!-- Right Navigation Arrow Button -->
+          <button class="carousel-nav-btn nav-next" aria-label="Next Flavor">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
 
-          <!-- Flavor 3 -->
-          <div class="flavor-card">
-            <div class="flavor-circle-halo halo-red">
-              <img src="https://images.unsplash.com/photo-1580915411954-282cb1b0d780?auto=format&fit=crop&w=400&q=80"
-                alt="Chocolate Fudge Ice Cream" class="flavor-img">
-            </div>
-            <h3 class="flavor-name">Chocolate Fudge</h3>
-          </div>
+        <!-- 3 Pagination Dots -->
+        <div class="flavors-pagination-dots">
+          <span class="p-dot"></span>
+          <span class="p-dot active"></span>
+          <span class="p-dot"></span>
+        </div>
 
-          <!-- Flavor 4 -->
-          <div class="flavor-card">
-            <div class="flavor-circle-halo halo-mint">
-              <img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=400&q=80"
-                alt="Pistachio Bliss Ice Cream" class="flavor-img">
-            </div>
-            <h3 class="flavor-name">Pistachio Bliss</h3>
-          </div>
-
-          <!-- Flavor 5 -->
-          <div class="flavor-card">
-            <div class="flavor-circle-halo halo-pink">
-              <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=400&q=80"
-                alt="Strawberry Swirl Ice Cream" class="flavor-img">
-            </div>
-            <h3 class="flavor-name">Strawberry Swirl</h3>
-          </div>
+        <!-- Bottom Right CTA Button -->
+        <div class="flavors-bottom-cta">
+          <a href="#deals" class="btn btn-pill-pink view-all-flavors-btn">
+            <span>View All Flavors</span>
+            <span class="btn-arrow-bubble">➔</span>
+          </a>
         </div>
       </div>
     </section>
@@ -226,65 +256,89 @@
     <section id="deals" class="section promo-section">
       <div class="container">
         <div class="promo-split-banner">
-          <!-- Left Block: Mint Teal "SWEET DELIGHT!" -->
+          <!-- Left Block: Mint Teal "SWEET DELIGHT!" with icecreame.jpeg -->
           <div class="promo-left-block">
             <div class="promo-content">
+              <span class="promo-badge">SPECIAL OFFER</span>
               <h2 class="promo-title">
-                SWEET<br><span class="highlight-yellow">DELIGHT!</span>
+                <span class="promo-title-white">SWEET</span>
+                <span class="promo-title-yellow">DELIGHT!</span>
               </h2>
-              <a href="#flavors" class="btn btn-pill-white">Order Now</a>
               <p class="promo-subtext">
-                From warm treats to indulgent surprises, we serve happiness in every bite.
+                Treat yourself to rich, creamy ice cream made with real ingredients and endless happiness in every bite.
               </p>
-            </div>
-            <div class="promo-visual">
-              <img src="https://images.unsplash.com/photo-1549395156-e0c1fe6fc7a5?auto=format&fit=crop&w=500&q=80"
-                alt="Chocolate Dipped Almond Ice Cream Bar" class="promo-bar-img">
-              <div class="choco-crumb crumb-1"></div>
-              <div class="choco-crumb crumb-2"></div>
+              <a href="#flavors" class="btn btn-pill-white promo-shop-btn">
+                <span>Shop Now</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" class="btn-arrow-svg">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
             </div>
           </div>
 
-          <!-- Right Block: White Card "20% DISCOUNT" -->
+          <!-- Right Block: Soft Pink Card "20% DISCOUNT" -->
           <div class="promo-right-card">
             <div class="discount-header">
               <span class="discount-percent">20%</span>
-              <span class="discount-label">DISCOUNT</span>
+              <h3 class="discount-label">DISCOUNT</h3>
+              <p class="discount-subtext">On your favorite flavors!</p>
             </div>
 
             <!-- Price Comparison List -->
             <div class="deals-list">
+              <!-- Item 1: Fresh Strawberry -->
               <div class="deal-item">
                 <div class="deal-thumb-box">
-                  <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=150&q=80"
-                    alt="Fresh Doughnut" class="deal-thumb">
+                  <img src="./assets/flavor-5.jpeg" alt="Fresh Strawberry Ice Cream Scoop" class="deal-thumb">
                 </div>
                 <div class="deal-info">
-                  <span class="deal-name">Fresh Doughnut</span>
+                  <h4 class="deal-name">Fresh Strawberry</h4>
                 </div>
                 <div class="deal-price-box">
+                  <span class="deal-old-price">$4.99</span>
                   <span class="deal-price">$3.99</span>
-                  <span class="deal-unit">each</span>
                 </div>
               </div>
 
+              <!-- Item 2: Belgian Chocolate -->
               <div class="deal-item">
                 <div class="deal-thumb-box">
-                  <img
-                    src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=150&q=80"
-                    alt="Choco Pretzel" class="deal-thumb">
+                  <img src="./assets/flavor-3.jpeg" alt="Belgian Chocolate Ice Cream Scoop" class="deal-thumb">
                 </div>
                 <div class="deal-info">
-                  <span class="deal-name">Choco Pretzel</span>
+                  <h4 class="deal-name">Belgian Chocolate</h4>
                 </div>
                 <div class="deal-price-box">
-                  <span class="deal-price">$5.99</span>
-                  <span class="deal-unit">each</span>
+                  <span class="deal-old-price">$4.99</span>
+                  <span class="deal-price">$3.99</span>
+                </div>
+              </div>
+
+              <!-- Item 3: Classic Vanilla -->
+              <div class="deal-item">
+                <div class="deal-thumb-box">
+                  <img src="./assets/flavor-2.jpeg" alt="Classic Vanilla Ice Cream Scoop" class="deal-thumb">
+                </div>
+                <div class="deal-info">
+                  <h4 class="deal-name">Classic Vanilla</h4>
+                </div>
+                <div class="deal-price-box">
+                  <span class="deal-old-price">$4.99</span>
+                  <span class="deal-price">$3.99</span>
                 </div>
               </div>
             </div>
 
-            <a href="#flavors" class="btn btn-pill-pink-wide">View All Deals ➔</a>
+            <a href="#flavors" class="btn btn-pill-pink-wide promo-deals-btn">
+              <span>View All Deals</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" class="btn-arrow-svg">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
           </div>
         </div>
       </div>

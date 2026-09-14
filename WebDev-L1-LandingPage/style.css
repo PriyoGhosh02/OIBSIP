@@ -538,86 +538,105 @@ input {
    3. FLAVORS SLIDER SECTION ("Our Delicious Creations")
    ========================================================= */
 .flavors-section {
-  background-color: var(--color-white);
-  border-radius: var(--radius-lg);
-  margin: 0 1rem;
-  box-shadow: var(--shadow-soft);
+  background-color: var(--color-bg);
+  padding: 5.5rem 0 6rem;
+  position: relative;
 }
 
-/* Section Header Row with Top-Right Nav Controls */
-.section-header-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 2rem;
+/* Centered Section Header */
+.flavors-header-centered {
+  text-align: center;
   margin-bottom: 3.5rem;
-  flex-wrap: wrap;
 }
 
-.script-tag {
-  font-family: var(--font-script);
-  font-size: 2rem;
-  color: var(--color-pink);
-  display: block;
-  line-height: 1;
-  margin-bottom: 0.2rem;
+.explore-tag-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 
-.section-heading {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 3.5vw, 2.75rem);
+.explore-tag {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
   font-weight: 700;
-  color: var(--color-dark);
-  line-height: 1.15;
+  letter-spacing: 0.28em;
+  color: var(--color-pink);
+  text-transform: uppercase;
 }
 
-.section-desc-text {
-  max-width: 440px;
-  font-size: 0.95rem;
-  color: var(--color-gray);
-  line-height: 1.6;
+.explore-underline {
+  width: 32px;
+  height: 2px;
+  background-color: var(--color-pink);
+  border-radius: 100px;
+  margin-top: 0.35rem;
 }
 
-/* Top-Right Aligned Carousel Navigation Arrows */
-.slider-arrows {
+.flavors-main-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  color: #231F20;
+  line-height: 1.1;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.02em;
+}
+
+.heading-pink {
+  color: var(--color-pink);
+}
+
+.flavors-sub-heading {
+  font-size: 1.12rem;
+  color: #646A73;
+  line-height: 1.55;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Carousel Outer Row with Nav Arrows */
+.flavors-carousel-wrapper {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-left: auto;
-  /* Aligns to far right of header */
+  justify-content: space-between;
+  gap: 1.5rem;
+  position: relative;
+  width: 100%;
 }
 
-.slider-btn {
-  width: 44px;
-  height: 44px;
+.carousel-nav-btn {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-border);
-  color: var(--color-dark);
-  font-size: 1.6rem;
+  background-color: #FFFFFF;
+  border: 1px solid #EAEAEB;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #23262F;
   cursor: pointer;
   transition: var(--transition);
-  line-height: 1;
-  padding-bottom: 3px;
+  flex-shrink: 0;
 }
 
-.slider-btn:hover {
+.carousel-nav-btn:hover {
   background-color: var(--color-pink);
-  color: var(--color-white);
+  color: #FFFFFF;
   border-color: var(--color-pink);
+  transform: scale(1.08);
   box-shadow: var(--shadow-pink);
-  transform: translateY(-2px);
 }
 
-/* Circular Flavor Items */
+/* Flavors Grid */
 .flavors-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 2rem;
-  align-items: center;
+  gap: 1.75rem;
+  width: 100%;
+  align-items: flex-start;
+  justify-items: center;
 }
 
 .flavor-card {
@@ -626,7 +645,7 @@ input {
   align-items: center;
   text-align: center;
   cursor: pointer;
-  transition: var(--transition);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .flavor-card:hover {
@@ -634,36 +653,18 @@ input {
 }
 
 .flavor-circle-halo {
-  width: 150px;
-  height: 150px;
+  width: 175px;
+  height: 175px;
   border-radius: 50%;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
   margin-bottom: 1.25rem;
-  transition: var(--transition);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.halo-teal {
-  background-color: var(--color-teal-light);
-}
-
-.halo-peach {
-  background-color: var(--color-peach-light);
-}
-
-.halo-red {
-  background-color: #FDE8E8;
-}
-
-.halo-mint {
-  background-color: #E6F7ED;
-}
-
-.halo-pink {
-  background-color: var(--color-pink-light);
+.flavor-card:hover .flavor-circle-halo {
+  transform: scale(1.06);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
 }
 
 .flavor-img {
@@ -671,187 +672,337 @@ input {
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  transition: transform 0.4s ease;
-}
-
-.flavor-card:hover .flavor-img {
-  transform: scale(1.08);
 }
 
 .flavor-name {
   font-family: var(--font-heading);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--color-dark);
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #1F1F1F;
+  letter-spacing: -0.01em;
+}
+
+/* Pagination Dots */
+.flavors-pagination-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2.75rem;
+}
+
+.p-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #FFD4DE;
+  transition: var(--transition);
+}
+
+.p-dot.active {
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-pink);
+  box-shadow: 0 0 8px rgba(239, 98, 128, 0.5);
+}
+
+/* Bottom Right CTA */
+.flavors-bottom-cta {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.25rem;
+}
+
+.view-all-flavors-btn {
+  font-size: 1.02rem;
+  padding: 0.9rem 2.2rem;
 }
 
 /* ==========================================================
    4. PROMO BANNER (SWEET DELIGHT & 20% DISCOUNT)
    ========================================================= */
 .promo-section {
-  padding: 4rem 0;
+  padding: 4.5rem 0;
+  position: relative;
 }
 
 .promo-split-banner {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 1.62fr 1fr;
   gap: 2rem;
   align-items: stretch;
 }
 
-/* Left Teal Block */
+/* Left Teal Block with icecreame.jpeg background */
 .promo-left-block {
-  background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-teal-hover) 100%);
-  border-radius: var(--radius-lg);
-  padding: 3.5rem 3rem;
+  background-color: #179B8E;
+  background-image: url('./assets/icecreame.jpeg');
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: cover;
+  border-radius: 28px;
+  padding: 3.5rem 3.2rem;
   color: var(--color-white);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow-teal);
+  min-height: 440px;
+  box-shadow: 0 20px 45px rgba(22, 155, 142, 0.22);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.promo-left-block:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px rgba(22, 155, 142, 0.28);
 }
 
 .promo-content {
-  max-width: 320px;
+  position: relative;
   z-index: 2;
+  max-width: 330px;
+}
+
+.promo-badge {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.92);
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
 }
 
 .promo-title {
   font-family: var(--font-heading);
-  font-size: 2.8rem;
+  font-size: clamp(2.8rem, 4.2vw, 3.8rem);
   font-weight: 700;
-  line-height: 1.05;
-  margin-bottom: 1.5rem;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.highlight-yellow {
-  color: var(--color-yellow);
+.promo-title-white {
+  color: #FFFFFF;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.promo-title-yellow {
+  color: #FFF078;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 .promo-subtext {
-  margin-top: 1.5rem;
-  font-size: 0.95rem;
-  opacity: 0.92;
-  line-height: 1.5;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.55;
+  margin-bottom: 2rem;
+  max-width: 320px;
 }
 
-.promo-visual {
-  position: relative;
-  z-index: 2;
-  width: 220px;
-  height: 260px;
-  display: flex;
+.promo-shop-btn {
+  background-color: #FFFFFF;
+  color: #EF536E;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.85rem 2rem;
+  border-radius: 9999px;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.6rem;
+  width: fit-content;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: var(--transition);
+  text-decoration: none;
 }
 
-.promo-bar-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3));
-  transform: rotate(-10deg);
-  transition: transform 0.5s ease;
+.promo-shop-btn .btn-arrow-svg {
+  transition: transform 0.3s ease;
+  stroke: currentColor;
 }
 
-.promo-left-block:hover .promo-bar-img {
-  transform: rotate(-5deg) scale(1.05);
+.promo-shop-btn:hover {
+  background-color: #FFFFFF;
+  color: #E11D48;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
-/* Right White 20% Discount Card */
+.promo-shop-btn:hover .btn-arrow-svg {
+  transform: translateX(4px);
+}
+
+/* Right Soft Pink 20% Discount Card */
 .promo-right-card {
-  background-color: var(--color-white);
-  border-radius: var(--radius-lg);
-  padding: 2.5rem 2.25rem;
-  box-shadow: var(--shadow-soft);
+  background-color: #FFF6F7;
+  border-radius: 28px;
+  padding: 2.25rem 2rem 2rem;
+  border: 1.5px solid #FFE4E9;
+  box-shadow: 0 15px 35px rgba(239, 98, 128, 0.08);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid var(--color-border);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.promo-right-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(239, 98, 128, 0.14);
 }
 
 .discount-header {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .discount-percent {
   font-family: var(--font-heading);
-  font-size: 2.4rem;
+  font-size: 3.2rem;
   font-weight: 700;
-  color: var(--color-pink);
+  color: #EF536E;
   display: block;
-  line-height: 1;
+  line-height: 0.95;
 }
 
 .discount-label {
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  color: var(--color-dark);
-  letter-spacing: 0.05em;
+  color: #1E2229;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  margin-top: 0.2rem;
+}
+
+.discount-subtext {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #64748B;
+  margin-top: 0.35rem;
 }
 
 .deals-list {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  margin-bottom: 2rem;
+  gap: 0;
+  margin-bottom: 1.25rem;
 }
 
 .deal-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1rem;
-  background-color: var(--color-bg);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(239, 98, 128, 0.12);
+  background: transparent;
+  transition: transform 0.3s ease;
+}
+
+.deal-item:last-child {
+  border-bottom: none;
+}
+
+.deal-item:hover {
+  transform: translateX(4px);
 }
 
 .deal-thumb-box {
-  width: 50px;
-  height: 50px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   overflow: hidden;
-  background-color: var(--color-white);
+  flex-shrink: 0;
+  background-color: #FFE6EC;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease;
+}
+
+.deal-item:hover .deal-thumb-box {
+  transform: scale(1.08);
 }
 
 .deal-thumb {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 50%;
 }
 
 .deal-info {
   flex: 1;
-  padding-left: 1rem;
+  padding: 0 1rem;
 }
 
 .deal-name {
   font-family: var(--font-heading);
   font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-dark);
+  font-weight: 700;
+  color: #1E2229;
+  line-height: 1.2;
 }
 
 .deal-price-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
   text-align: right;
 }
 
+.deal-old-price {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: #94A3B8;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 1px;
+}
+
 .deal-price {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--color-pink);
-  display: block;
+  font-weight: 800;
+  color: #EF536E;
   line-height: 1.1;
 }
 
-.deal-unit {
-  font-size: 0.75rem;
-  color: var(--color-gray);
+.promo-deals-btn {
+  background: linear-gradient(135deg, #EF536E 0%, #F46B84 100%);
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.95rem 1.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(239, 83, 110, 0.35);
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.promo-deals-btn .btn-arrow-svg {
+  transition: transform 0.3s ease;
+  stroke: currentColor;
+}
+
+.promo-deals-btn:hover {
+  background: linear-gradient(135deg, #E11D48 0%, #EF536E 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(239, 83, 110, 0.45);
+}
+
+.promo-deals-btn:hover .btn-arrow-svg {
+  transform: translateX(4px);
 }
 
 /* ==========================================================
@@ -1461,19 +1612,50 @@ input {
     margin-right: 0;
   }
 
+  .carousel-nav-btn {
+    display: none;
+  }
+
+  .flavors-carousel-wrapper {
+    gap: 0;
+  }
+
   .flavors-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .flavors-bottom-cta {
+    justify-content: center;
+    margin-top: 2rem;
   }
 
   .promo-left-block {
-    padding: 2.5rem 1.5rem;
-    flex-direction: column;
+    padding: 3rem 1.75rem;
     text-align: center;
-    gap: 2rem;
+    align-items: center;
+    min-height: 380px;
+    background-position: 75% center;
+  }
+
+  .promo-left-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(23, 155, 142, 0.72) 0%, rgba(23, 155, 142, 0.45) 100%);
+    z-index: 1;
   }
 
   .promo-content {
     max-width: 100%;
+  }
+
+  .promo-shop-btn {
+    margin: 0 auto;
+  }
+
+  .promo-right-card {
+    padding: 2rem 1.5rem 1.75rem;
   }
 
   .about-pink-block {
