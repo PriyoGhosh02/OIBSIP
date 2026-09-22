@@ -121,16 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 6. Download CV Interaction
   downloadCvBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
+    btn.addEventListener('click', () => {
       showToast('📄 Priyo Ghosh — Resume download started!');
-      
-      // Simulate file download
-      setTimeout(() => {
-        const link = document.createElement('a');
-        link.href = 'mailto:priyoghosh02@gmail.com?subject=Requesting%20Resume%20-%20Priyo%20Ghosh';
-        link.target = '_blank';
-      }, 500);
     });
   });
 
