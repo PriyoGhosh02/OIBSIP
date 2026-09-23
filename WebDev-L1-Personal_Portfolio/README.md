@@ -2,8 +2,6 @@
 
 <div align="center">
 
-  <img src="./assets/images/project-portfolio.jpg" alt="Priyo Ghosh Portfolio Banner" width="600" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);"/>
-
   <br><br>
 
   <h1>🚀 Web Developer & Frontend Engineer ✨</h1>
