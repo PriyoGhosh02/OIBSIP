@@ -2,9 +2,6 @@
 
 <div align="center">
 
-  <img src="./assets/newsletter.jpeg" alt="Antix Ice Cream Banner" width="600" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);"/>
-
-  <br><br>
 
   <h1>🍨 Scoop. Smile. Repeat! ✨</h1>
 

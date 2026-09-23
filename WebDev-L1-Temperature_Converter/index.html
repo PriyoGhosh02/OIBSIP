@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple, clean, and accurate Temperature Converter between Celsius, Fahrenheit, and Kelvin.">
+  <title>Temperature Converter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Header Section -->
+    <header class="header">
+      <span class="eyebrow">SIMPLE &bull; ACCURATE &bull; INSTANT</span>
+      <h1 class="title">Temperature <span class="highlight">Converter</span></h1>
+      <p class="subtitle">Convert temperatures between Celsius, Fahrenheit, and Kelvin quickly and easily.</p>
+    </header>
+
+    <!-- Converter Card -->
+    <main class="card" role="main">
+      <form id="tempForm" novalidate onsubmit="return false;">
+        <!-- Inputs Row -->
+        <div class="input-grid">
+          <!-- Temperature Input -->
+          <div class="input-group">
+            <label for="tempInput">Temperature</label>
+            <div class="input-field-wrapper">
+              <input
+                type="number"
+                id="tempInput"
+                name="temperature"
+                step="any"
+                placeholder="Enter temperature"
+                autocomplete="off"
+                required
+              >
+            </div>
+          </div>
+
+          <!-- Unit Selector -->
+          <div class="input-group">
+            <label for="unitSelect">Convert From</label>
+            <div class="select-field-wrapper">
+              <select id="unitSelect" name="unit">
+                <option value="celsius">Celsius (°C)</option>
+                <option value="fahrenheit">Fahrenheit (°F)</option>
+                <option value="kelvin">Kelvin (K)</option>
+              </select>
+              <svg class="select-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Button Controls -->
+        <div class="button-group">
+          <button type="button" id="convertBtn" class="btn btn-primary">Convert Temperature</button>
+          <button type="button" id="clearBtn" class="btn btn-secondary">Clear</button>
+        </div>
+
+        <!-- Error Message Alert -->
+        <div id="errorArea" class="error-banner hidden" role="alert" aria-live="polite">
+          <svg class="error-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span id="errorMessage" class="error-text"></span>
+        </div>
+
+        <!-- Results Section -->
+        <section id="resultsSection" class="results-section hidden" aria-label="Conversion Results">
+          <h2 class="results-title">Conversion Results</h2>
+          
+          <div class="results-grid">
+            <!-- Celsius Result Card -->
+            <div class="result-card result-celsius">
+              <div class="result-icon-box" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
+                </svg>
+              </div>
+              <div class="result-details">
+                <span class="result-label">Celsius</span>
+                <span id="celsiusValue" class="result-value">--</span>
+              </div>
+            </div>
+
+            <!-- Fahrenheit Result Card -->
+            <div class="result-card result-fahrenheit">
+              <div class="result-icon-box" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
+                </svg>
+              </div>
+              <div class="result-details">
+                <span class="result-label">Fahrenheit</span>
+                <span id="fahrenheitValue" class="result-value">--</span>
+              </div>
+            </div>
+
+            <!-- Kelvin Result Card -->
+            <div class="result-card result-kelvin">
+              <div class="result-icon-box" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
+                </svg>
+              </div>
+              <div class="result-details">
+                <span class="result-label">Kelvin</span>
+                <span id="kelvinValue" class="result-value">--</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Note Area -->
+          <div class="absolute-zero-note">
+            <svg class="note-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>Note: Temperatures below absolute zero (&minus;273.15&deg;C / &minus;459.67&deg;F / 0 K) are not possible.</span>
+          </div>
+        </section>
+      </form>
+    </main>
+
+    <!-- Page Footer -->
+    <footer class="footer">
+      <p>&copy; 2026 Temperature Converter &bull; Built with HTML5, CSS3 &amp; Vanilla JavaScript</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
