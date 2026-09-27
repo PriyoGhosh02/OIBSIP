@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Organize your day with ease using this clean, modern, and responsive To-Do Web App built with HTML5, CSS3, and Vanilla JavaScript.">
+  <title>My Tasks | Organize Your Day with Ease</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Main Application Wrapper -->
+  <div class="app-wrapper">
+
+    <!-- 1. Header Section -->
+    <header class="app-header">
+      <div class="header-sparkle-title">
+        <!-- Left Sparkle Accent -->
+        <span class="sparkle sparkle-left" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round">
+            <line x1="4" y1="12" x2="8" y2="12"></line>
+            <line x1="7" y1="5" x2="10" y2="8"></line>
+            <line x1="7" y1="19" x2="10" y2="16"></line>
+          </svg>
+        </span>
+
+        <h1 class="main-title">
+          Organize Your Day <span class="highlight">with Ease</span>
+        </h1>
+
+        <!-- Right Sparkle Accent -->
+        <span class="sparkle sparkle-right" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round">
+            <line x1="20" y1="12" x2="16" y2="12"></line>
+            <line x1="17" y1="5" x2="14" y2="8"></line>
+            <line x1="17" y1="19" x2="14" y2="16"></line>
+          </svg>
+        </span>
+      </div>
+
+      <p class="sub-title">Add tasks, track your progress, and stay productive every day.</p>
+    </header>
+
+    <!-- 2. Add Task Input Card -->
+    <section class="add-task-section" aria-label="Add New Task">
+      <form id="add-task-form" class="add-task-form" novalidate>
+        <div class="input-group-container">
+          <div class="input-wrapper">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </span>
+            <label for="task-input" class="sr-only">Enter a new task</label>
+            <input 
+              type="text" 
+              id="task-input" 
+              class="task-input" 
+              placeholder="Enter a new task..." 
+              autocomplete="off"
+              maxlength="150"
+            >
+          </div>
+
+          <button type="submit" id="add-task-btn" class="btn btn-add">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>Add Task</span>
+          </button>
+        </div>
+
+        <!-- Helper Text & Dynamic Error Validation Message -->
+        <div class="form-feedback-wrapper">
+          <span id="form-feedback" class="form-feedback">Press Enter to add a task</span>
+        </div>
+      </form>
+    </section>
+
+    <!-- 3. Tasks Container (Desktop: Two Columns; Mobile: Stacked) -->
+    <main class="tasks-board">
+
+      <!-- Left Column: Pending Tasks Section -->
+      <section class="task-column pending-column" aria-labelledby="pending-heading">
+        <header class="column-header">
+          <div class="column-header-left">
+            <div class="column-icon-badge badge-pending" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <div class="column-title-box">
+              <h2 id="pending-heading" class="column-title">Pending Tasks</h2>
+              <p class="column-subtitle">Tasks you need to complete</p>
+            </div>
+          </div>
+          <span id="pending-count-badge" class="count-pill pill-pending">0 pending</span>
+        </header>
+
+        <!-- Pending Tasks List Container -->
+        <ul id="pending-list" class="task-list" aria-live="polite">
+          <!-- Dynamically injected via script.js -->
+        </ul>
+
+        <!-- Pending Empty State Message -->
+        <div id="pending-empty" class="empty-state-box hidden">
+          <span class="empty-emoji" aria-hidden="true">🎉</span>
+          <h3 class="empty-title">No pending tasks. You're all caught up!</h3>
+          <p class="empty-desc">Enjoy your free time or add a new task above to stay productive.</p>
+        </div>
+
+        <!-- Motivation Card at bottom of Pending column -->
+        <div id="pending-motivation" class="motivation-card motivation-blue">
+          <div class="motivation-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+          </div>
+          <div class="motivation-content">
+            <h4 class="motivation-title">You've got this!</h4>
+            <p class="motivation-desc">Keep going and complete your tasks.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Completed Tasks Section -->
+      <section class="task-column completed-column" aria-labelledby="completed-heading">
+        <header class="column-header">
+          <div class="column-header-left">
+            <div class="column-icon-badge badge-completed" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <div class="column-title-box">
+              <h2 id="completed-heading" class="column-title">Completed Tasks</h2>
+              <p class="column-subtitle">Tasks you have finished</p>
+            </div>
+          </div>
+          <span id="completed-count-badge" class="count-pill pill-completed">0 completed</span>
+        </header>
+
+        <!-- Completed Tasks List Container -->
+        <ul id="completed-list" class="task-list" aria-live="polite">
+          <!-- Dynamically injected via script.js -->
+        </ul>
+
+        <!-- Completed Empty State Message -->
+        <div id="completed-empty" class="empty-state-box hidden">
+          <span class="empty-emoji" aria-hidden="true">📋</span>
+          <h3 class="empty-title">No completed tasks yet.</h3>
+          <p class="empty-desc">Finish a task to see it here.</p>
+        </div>
+
+        <!-- Celebration Card at bottom of Completed column -->
+        <div id="completed-celebration" class="motivation-card motivation-dashed">
+          <div class="celebration-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5.8 11.3 2 22l10.7-3.79"></path>
+              <path d="M4 3h.01"></path>
+              <path d="M22 8h.01"></path>
+              <path d="M15 2h.01"></path>
+              <path d="M22 20h.01"></path>
+              <path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12v0c.1.86-.57 1.63-1.45 1.63h-.38e-1a1.5 1.5 0 0 1-1.45-1.12l-.52-1.97A2.9 2.9 0 0 0 11.16 2.5v0"></path>
+            </svg>
+          </div>
+          <div class="celebration-content">
+            <h4 class="celebration-title">Great job!</h4>
+            <p class="celebration-desc">You've completed all available tasks.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 4. Subtle Application Footer -->
+    <footer class="app-footer">
+      <p>
+        Designed & Built by <strong>Priyo Ghosh</strong> &bull; 
+        <span>Oasis Infobyte (OIBSIP) Web Development Internship &bull; Level 2 Task 3</span>
+      </p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
