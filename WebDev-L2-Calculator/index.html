@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple, clean, and fast browser-based Arithmetic Calculator built with HTML5, CSS3, and Vanilla JavaScript.">
+  <title>Calculator | Simple & Fast Arithmetic Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-container">
+    <!-- Header Section -->
+    <header class="header">
+      <span class="eyebrow">SIMPLE &bull; FAST &bull; ACCURATE</span>
+      <h1 class="title">Your Everyday <span class="highlight">Calculator</span></h1>
+      <p class="subtitle">Perform basic arithmetic operations quickly and easily with a clean and simple interface.</p>
+    </header>
+
+    <!-- Calculator Card -->
+    <main class="calculator-card" role="main" aria-label="Arithmetic Calculator">
+      <!-- Calculator Display Screen -->
+      <div class="calculator-display" aria-live="polite">
+        <div id="expressionDisplay" class="display-expression" aria-label="Calculation expression"></div>
+        <div id="currentDisplay" class="display-current" aria-label="Current value or result">0</div>
+      </div>
+
+      <!-- Calculator Buttons Grid -->
+      <div class="calculator-buttons" role="group" aria-label="Calculator keypad">
+        <!-- Row 1 -->
+        <button type="button" id="clearBtn" class="btn btn-clear" data-action="clear" aria-label="Clear all">C</button>
+        <button type="button" id="backspaceBtn" class="btn btn-control" data-action="backspace" aria-label="Delete last character">
+          <svg class="backspace-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+            <line x1="18" y1="9" x2="12" y2="15"></line>
+            <line x1="12" y1="9" x2="18" y2="15"></line>
+          </svg>
+        </button>
+        <button type="button" class="btn btn-operator" data-action="operator" data-value="÷" aria-label="Divide">&divide;</button>
+        <button type="button" class="btn btn-operator" data-action="operator" data-value="×" aria-label="Multiply">&times;</button>
+
+        <!-- Row 2 -->
+        <button type="button" class="btn btn-number" data-action="number" data-value="7" aria-label="Seven">7</button>
+        <button type="button" class="btn btn-number" data-action="number" data-value="8" aria-label="Eight">8</button>
+        <button type="button" class="btn btn-number" data-action="number" data-value="9" aria-label="Nine">9</button>
+        <button type="button" class="btn btn-operator" data-action="operator" data-value="−" aria-label="Subtract">&minus;</button>
+
+        <!-- Row 3 -->
+        <button type="button" class="btn btn-number" data-action="number" data-value="4" aria-label="Four">4</button>
+        <button type="button" class="btn btn-number" data-action="number" data-value="5" aria-label="Five">5</button>
+        <button type="button" class="btn btn-number" data-action="number" data-value="6" aria-label="Six">6</button>
+        <button type="button" class="btn btn-operator" data-action="operator" data-value="+" aria-label="Add">+</button>
+
+        <!-- Row 4 -->
+        <button type="button" class="btn btn-number" data-action="number" data-value="1" aria-label="One">1</button>
+        <button type="button" class="btn btn-number" data-action="number" data-value="2" aria-label="Two">2</button>
+        <button type="button" class="btn btn-number" data-action="number" data-value="3" aria-label="Three">3</button>
+        <button type="button" id="equalsBtn" class="btn btn-equals" data-action="calculate" aria-label="Calculate equals">=</button>
+
+        <!-- Row 5 -->
+        <button type="button" class="btn btn-number btn-zero" data-action="number" data-value="0" aria-label="Zero">0</button>
+        <button type="button" id="decimalBtn" class="btn btn-number" data-action="decimal" data-value="." aria-label="Decimal point">.</button>
+      </div>
+    </main>
+
+    <!-- Simple Footer -->
+    <footer class="footer">
+      <p>&copy; 2026 Calculator &bull; Built with HTML5, CSS3 &amp; Vanilla JavaScript</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

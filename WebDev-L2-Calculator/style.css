@@ -1,0 +1,330 @@
+/* ==========================================================================
+   Everyday Calculator - Modern, Clean & Responsive CSS
+   ========================================================================== */
+
+/* --- CSS Variables & Design Tokens --- */
+:root {
+  --color-page-bg: #F8FAFC;
+  --color-gradient-top: #EFF6FF;
+  --color-card-bg: #FFFFFF;
+  --color-card-border: #E2E8F0;
+
+  --color-text-main: #0F172A;
+  --color-text-muted: #64748B;
+  --color-text-light: #94A3B8;
+
+  --color-display-bg: #0F172A;
+  --color-display-text: #FFFFFF;
+  --color-display-expr: #94A3B8;
+
+  --color-btn-num-bg: #F8FAFC;
+  --color-btn-num-border: #E2E8F0;
+  --color-btn-num-hover: #F1F5F9;
+  --color-btn-num-text: #0F172A;
+
+  --color-btn-op-bg: #E2E8F0;
+  --color-btn-op-hover: #CBD5E1;
+  --color-btn-op-text: #0F172A;
+
+  --color-btn-clear-bg: #EF4444;
+  --color-btn-clear-hover: #DC2626;
+  --color-btn-clear-text: #FFFFFF;
+
+  --color-btn-eq-bg: #2563EB;
+  --color-btn-eq-hover: #1D4ED8;
+  --color-btn-eq-text: #FFFFFF;
+
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --shadow-card: 0 20px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+  --shadow-btn: 0 2px 4px rgba(15, 23, 42, 0.02);
+  --radius-card: 24px;
+  --radius-display: 16px;
+  --radius-btn: 16px;
+  --transition: all 0.15s ease-in-out;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-page-bg);
+  background-image: radial-gradient(circle at 50% 0%, var(--color-gradient-top) 0%, var(--color-page-bg) 65%);
+  color: var(--color-text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Page Layout Container --- */
+.page-container {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+/* --- Header Section --- */
+.header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #3B82F6;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--color-text-main);
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+}
+
+.title .highlight {
+  color: #2563EB;
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  max-width: 360px;
+  line-height: 1.45;
+}
+
+/* --- Calculator Card --- */
+.calculator-card {
+  width: 100%;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+/* --- Display Screen --- */
+.calculator-display {
+  background-color: var(--color-display-bg);
+  border-radius: var(--radius-display);
+  padding: 1.15rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  min-height: 110px;
+  user-select: none;
+}
+
+.display-expression {
+  color: var(--color-display-expr);
+  font-size: 0.95rem;
+  font-weight: 500;
+  min-height: 1.4rem;
+  width: 100%;
+  text-align: right;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+.display-expression::-webkit-scrollbar {
+  display: none;
+}
+
+.display-current {
+  color: var(--color-display-text);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.15;
+  width: 100%;
+  text-align: right;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  letter-spacing: -0.02em;
+}
+
+.display-current::-webkit-scrollbar {
+  display: none;
+}
+
+/* Error state font adjustment */
+.display-current.error-text {
+  font-size: 1.35rem;
+  color: #F87171;
+  font-weight: 600;
+}
+
+/* --- Calculator Keypad (CSS Grid) --- */
+.calculator-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 60px;
+  gap: 12px;
+  margin-top: 1.25rem;
+}
+
+/* Base Button Styling */
+.btn {
+  font-family: inherit;
+  font-size: 1.35rem;
+  font-weight: 600;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  border: none;
+  user-select: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4);
+}
+
+/* Number Buttons (0-9, .) */
+.btn-number {
+  background-color: var(--color-btn-num-bg);
+  border: 1px solid var(--color-btn-num-border);
+  color: var(--color-btn-num-text);
+  box-shadow: var(--shadow-btn);
+}
+
+.btn-number:hover {
+  background-color: var(--color-btn-num-hover);
+  border-color: #CBD5E1;
+}
+
+/* Zero button spans 2 columns */
+.btn-zero {
+  grid-column: span 2;
+}
+
+/* Clear Button (C) */
+.btn-clear {
+  background-color: var(--color-btn-clear-bg);
+  color: var(--color-btn-clear-text);
+  font-weight: 700;
+}
+
+.btn-clear:hover {
+  background-color: var(--color-btn-clear-hover);
+}
+
+/* Control & Operator Buttons */
+.btn-control,
+.btn-operator {
+  background-color: var(--color-btn-op-bg);
+  color: var(--color-btn-op-text);
+}
+
+.btn-control:hover,
+.btn-operator:hover {
+  background-color: var(--color-btn-op-hover);
+}
+
+.backspace-icon {
+  pointer-events: none;
+}
+
+/* Equals Button (= spans 2 rows) */
+.btn-equals {
+  grid-row: span 2;
+  height: 100%;
+  background-color: var(--color-btn-eq-bg);
+  color: var(--color-btn-eq-text);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.btn-equals:hover {
+  background-color: var(--color-btn-eq-hover);
+}
+
+/* --- Footer --- */
+.footer {
+  text-align: center;
+  font-size: 0.825rem;
+  color: var(--color-text-muted);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 480px) {
+  body {
+    padding: 1.25rem 0.75rem;
+    justify-content: flex-start;
+  }
+
+  .title {
+    font-size: 1.85rem;
+  }
+
+  .subtitle {
+    font-size: 0.875rem;
+  }
+
+  .calculator-card {
+    padding: 1.15rem;
+    border-radius: 20px;
+  }
+
+  .calculator-display {
+    padding: 1rem;
+    min-height: 96px;
+  }
+
+  .display-current {
+    font-size: 2rem;
+  }
+
+  .display-current.error-text {
+    font-size: 1.15rem;
+  }
+
+  .calculator-buttons {
+    grid-auto-rows: 52px;
+    gap: 8px;
+  }
+
+  .btn {
+    font-size: 1.2rem;
+    border-radius: 12px;
+  }
+
+  .btn-equals {
+    font-size: 1.45rem;
+  }
+}
