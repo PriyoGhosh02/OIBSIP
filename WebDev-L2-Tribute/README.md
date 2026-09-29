@@ -14,6 +14,13 @@
     <img src="https://img.shields.io/badge/Responsive-Design-2563EB?style=for-the-badge" alt="Responsive Design" />
   </p>
 
+    <h3>
+    🌐 <strong>Live Website:</strong> 
+    <a href="https://wondrous-paprenjak-37fff2.netlify.app/" target="_blank">
+      https://wondrous-paprenjak-37fff2.netlify.app/
+    </a>
+  </h3>
+
 </div>
 
 ---
