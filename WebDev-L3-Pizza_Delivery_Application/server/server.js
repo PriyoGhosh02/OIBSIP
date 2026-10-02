@@ -22,14 +22,42 @@ initSocket(server);
 
 // Middleware
 const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
+const allowedOrigins = [
+  clientUrl,
+  'https://pizzahub-five.vercel.app',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: [clientUrl, 'http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (
+        allowedOrigins.includes(origin) ||
+        origin.endsWith('.vercel.app') ||
+        origin.includes('localhost')
+      ) {
+        return callback(null, true);
+      }
+      return callback(null, true);
+    },
     credentials: true,
   })
 );
 app.use(express.json());
 app.use(cookieParser());
+
+// Serverless DB connection middleware (ensures DB is connected on each serverless hit)
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error('Serverless DB connection error:', err);
+    res.status(500).json({ success: false, message: 'Database connection failed' });
+  }
+});
 
 // Request logging (clean format)
 app.use((req, res, next) => {
@@ -52,6 +80,14 @@ app.get('/api/health', (req, res) => {
     status: 'ok',
     message: 'PizzaHub Server is online and ready.',
     timestamp: new Date().toISOString(),
+  });
+});
+
+// Root endpoint for testing
+app.get('/', (req, res) => {
+  res.json({
+    status: 'ok',
+    message: 'PizzaHub API is running on Vercel.',
   });
 });
 
@@ -89,4 +125,9 @@ const startServer = async () => {
   }
 };
 
-startServer();
+// When deployed on Vercel serverless, don't start persistent listener; export app directly
+if (!process.env.VERCEL) {
+  startServer();
+}
+
+module.exports = app;

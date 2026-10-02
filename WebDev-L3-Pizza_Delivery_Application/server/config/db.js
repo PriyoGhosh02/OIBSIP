@@ -1,26 +1,40 @@
 const mongoose = require('mongoose');
 
-let memoryServer = null;
+let isConnected = false;
 
 const connectDB = async () => {
+  // If already connected, reuse existing database connection
+  if (isConnected && mongoose.connection.readyState >= 1) {
+    return mongoose.connection;
+  }
+
   const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/pizzahub';
-  
+
   try {
-    // Attempt standard connection with 10-second timeout for cloud/Atlas connections
-    await mongoose.connect(uri, {
+    const conn = await mongoose.connect(uri, {
       serverSelectionTimeoutMS: 10000,
     });
+    isConnected = conn.connections[0].readyState;
     console.log(`✅ MongoDB connected successfully to ${mongoose.connection.host}`);
+    return conn;
   } catch (err) {
+    // If running in Vercel or production, throw error directly (do not start memory server)
+    if (process.env.VERCEL || process.env.NODE_ENV === 'production') {
+      console.error('❌ MongoDB Atlas connection error:', err.message);
+      throw err;
+    }
+
     console.warn(`⚠️ Could not connect to local/specified MongoDB (${err.message}).`);
     console.log('🔄 Starting embedded MongoDB Memory Server for seamless development...');
-    
+
     try {
       const { MongoMemoryServer } = require('mongodb-memory-server');
-      memoryServer = await MongoMemoryServer.create();
+      const memoryServer = await MongoMemoryServer.create();
       const memUri = memoryServer.getUri();
-      await mongoose.connect(memUri);
+      const conn = await mongoose.connect(memUri);
+      isConnected = conn.connections[0].readyState;
       console.log(`✅ Embedded MongoDB connected successfully at ${memUri}`);
+      return conn;
     } catch (memErr) {
       console.error('❌ Failed to start embedded MongoDB Memory Server:', memErr.message);
       process.exit(1);

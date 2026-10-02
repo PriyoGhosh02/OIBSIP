@@ -1,5 +1,11 @@
 # 🍕 PizzaHub — Full-Stack Pizza Delivery Application
 
+[![Vercel Deployment](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://pizzahub-five.vercel.app/)
+[![React 19](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js)](https://nodejs.org/)
+
+> 🌐 **Live Website URL**: **[https://pizzahub-five.vercel.app/](https://pizzahub-five.vercel.app/)**
+
 A clean, responsive, production-style MERN Full-Stack Pizza Delivery Application built with React.js, Node.js, Express.js, MongoDB, JWT Authentication, Razorpay Test Mode, Socket.IO, Nodemailer, and node-cron.
 
 ---
@@ -91,13 +97,15 @@ The client will start on: **`http://localhost:5173`**
 ## 🔑 Default Credentials
 
 ### Administrator Account
-* **URL**: `http://localhost:5173/admin/login`
+* **Live Admin Portal**: [https://pizzahub-five.vercel.app/admin/login](https://pizzahub-five.vercel.app/admin/login)
+* **Local Development**: `http://localhost:5173/admin/login`
 * **Email**: `admin@pizzahub.test`
 * **Password**: `AdminPassword123`
 
 ### Customer Account
-* Register a new account at `http://localhost:5173/register`
-* Click the development quick-verification link to activate instantly.
+* **Live Registration**: [https://pizzahub-five.vercel.app/register](https://pizzahub-five.vercel.app/register)
+* **Local Development**: `http://localhost:5173/register`
+* Register and activate using the development quick-verification link.
 
 ---
 

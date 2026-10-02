@@ -28,48 +28,61 @@ const AdminOrders = () => {
 
   const statusOptions = ['Order Received', 'In Kitchen', 'Sent to Delivery'];
 
-  const fetchOrders = async () => {
+  const fetchOrders = async (silent = false) => {
     try {
-      setLoading(true);
+      if (!silent) setLoading(true);
       const res = await api.get('/admin/orders');
       if (res.data.success) {
         setOrders(res.data.orders);
       }
     } catch (err) {
-      console.error('Failed to load orders:', err);
-      showToast('Failed to load orders.', 'error');
+      if (!silent) {
+        console.error('Failed to load orders:', err);
+        showToast('Failed to load orders.', 'error');
+      }
     } finally {
-      setLoading(false);
+      if (!silent) setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchOrders();
 
+    // Auto-sync polling every 6 seconds for serverless deployments
+    const pollInterval = setInterval(() => {
+      fetchOrders(true);
+    }, 6000);
+
     // Listen for live order updates / incoming orders via Socket.IO
     const socketServerUrl = import.meta.env.VITE_API_URL
       ? import.meta.env.VITE_API_URL.replace('/api', '')
       : 'http://localhost:5000';
 
-    const socket = io(socketServerUrl, {
-      withCredentials: true,
-    });
-
-    socket.on('orderStatusUpdated', (updatedOrder) => {
-      setOrders((prev) => {
-        const exists = prev.some((o) => o._id === updatedOrder._id);
-        if (exists) {
-          return prev.map((o) => (o._id === updatedOrder._id ? updatedOrder : o));
-        } else {
-          // New order placed! Prepend to list
-          showToast(`🔔 New incoming order received! (#${updatedOrder._id.slice(-6)})`, 'info');
-          return [updatedOrder, ...prev];
-        }
+    let socket;
+    try {
+      socket = io(socketServerUrl, {
+        withCredentials: true,
+        reconnectionAttempts: 3,
+        timeout: 5000,
       });
-    });
+
+      socket.on('orderStatusUpdated', (updatedOrder) => {
+        setOrders((prev) => {
+          const exists = prev.some((o) => o._id === updatedOrder._id);
+          if (exists) {
+            return prev.map((o) => (o._id === updatedOrder._id ? updatedOrder : o));
+          } else {
+            // New order placed! Prepend to list
+            showToast(`🔔 New incoming order received! (#${updatedOrder._id.slice(-6)})`, 'info');
+            return [updatedOrder, ...prev];
+          }
+        });
+      });
+    } catch (_) {}
 
     return () => {
-      socket.disconnect();
+      clearInterval(pollInterval);
+      if (socket) socket.disconnect();
     };
   }, []);
 

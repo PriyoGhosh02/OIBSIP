@@ -20,52 +20,59 @@ const MyOrders = () => {
   const [loading, setLoading] = useState(true);
   const { showToast } = useToast();
 
-  const fetchOrders = async () => {
+  const fetchOrders = async (silent = false) => {
     try {
-      setLoading(true);
+      if (!silent) setLoading(true);
       const res = await api.get('/orders/my-orders');
       if (res.data.success) {
         setOrders(res.data.orders);
       }
     } catch (err) {
-      console.error('Failed to load orders:', err);
+      if (!silent) console.error('Failed to load orders:', err);
     } finally {
-      setLoading(false);
+      if (!silent) setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchOrders();
 
-    // Setup Socket.IO listener for real-time status updates without page refresh!
+    // Auto-sync polling every 6 seconds for serverless deployments
+    const pollInterval = setInterval(() => {
+      fetchOrders(true);
+    }, 6000);
+
+    // Setup Socket.IO listener for real-time status updates when supported
     const socketServerUrl = import.meta.env.VITE_API_URL
       ? import.meta.env.VITE_API_URL.replace('/api', '')
       : 'http://localhost:5000';
 
-    const socket = io(socketServerUrl, {
-      withCredentials: true,
-    });
-
-    socket.on('connect', () => {
-      console.log('📡 Connected to live order tracking Socket.IO stream');
-    });
-
-    socket.on('orderStatusUpdated', (updatedOrder) => {
-      setOrders((prevOrders) => {
-        const orderExists = prevOrders.some((o) => o._id === updatedOrder._id);
-        if (orderExists) {
-          showToast(
-            `Order #${updatedOrder._id.slice(-6)} status updated to: "${updatedOrder.orderStatus}"!`,
-            'info'
-          );
-          return prevOrders.map((o) => (o._id === updatedOrder._id ? updatedOrder : o));
-        }
-        return prevOrders;
+    let socket;
+    try {
+      socket = io(socketServerUrl, {
+        withCredentials: true,
+        reconnectionAttempts: 3,
+        timeout: 5000,
       });
-    });
+
+      socket.on('orderStatusUpdated', (updatedOrder) => {
+        setOrders((prevOrders) => {
+          const orderExists = prevOrders.some((o) => o._id === updatedOrder._id);
+          if (orderExists) {
+            showToast(
+              `Order #${updatedOrder._id.slice(-6)} status updated to: "${updatedOrder.orderStatus}"!`,
+              'info'
+            );
+            return prevOrders.map((o) => (o._id === updatedOrder._id ? updatedOrder : o));
+          }
+          return prevOrders;
+        });
+      });
+    } catch (_) {}
 
     return () => {
-      socket.disconnect();
+      clearInterval(pollInterval);
+      if (socket) socket.disconnect();
     };
   }, []);
 
