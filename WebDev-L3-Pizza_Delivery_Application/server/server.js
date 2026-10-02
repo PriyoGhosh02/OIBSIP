@@ -24,6 +24,7 @@ initSocket(server);
 const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
 const allowedOrigins = [
   clientUrl,
+  'https://onlinepizzadeliverystore.vercel.app',
   'https://pizzahub-five.vercel.app',
   'http://localhost:5173',
   'http://127.0.0.1:5173',

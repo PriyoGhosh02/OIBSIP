@@ -6,13 +6,15 @@ A curated collection of web development internship tasks ranging from fundamenta
 
 ## 🍕 Featured Project: Level 3 — Pizza Delivery Application (PizzaHub)
 
-[![Vercel Deployment](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://pizzahub-five.vercel.app/)
+[![Vercel Deployment](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://onlinepizzadeliverystore.vercel.app/)
 [![React 19](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
 [![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js)](https://nodejs.org/)
 
-- 🌐 **Live Website**: **[https://pizzahub-five.vercel.app/](https://pizzahub-five.vercel.app/)**
+- 🌐 **Live Website**: **[https://onlinepizzadeliverystore.vercel.app/](https://onlinepizzadeliverystore.vercel.app/)**
+- 🛡️ **Admin Portal**: **[https://onlinepizzadeliverystore.vercel.app/admin/login](https://onlinepizzadeliverystore.vercel.app/admin/login)**
+- 🔑 **Admin Credentials**: `admin@pizzahub.test` / `AdminPassword123`
 - 📂 **Source Code**: [`WebDev-L3-Pizza_Delivery_Application/`](./WebDev-L3-Pizza_Delivery_Application)
-- **Features**: Interactive Pizza Builder, Real-time Order Tracker with Socket.IO, Razorpay Payment Gateway, Admin Inventory & Kitchen Dispatch Dashboard, Automated Stock Deduction & Background Email Alerts.
+- **Features**: Interactive 4-step Pizza Builder, Real-time Order Tracker with Socket.IO, Razorpay Payment Gateway, Admin Inventory & Kitchen Dispatch Dashboard, Automated Stock Deduction & Background Email Alerts.
 
 ---
 
@@ -33,4 +35,4 @@ A curated collection of web development internship tasks ranging from fundamenta
 
 ## 🚀 Live Demo Links
 
-- **PizzaHub (Level 3)**: [https://pizzahub-five.vercel.app/](https://pizzahub-five.vercel.app/)
+- **PizzaHub (Level 3)**: [https://onlinepizzadeliverystore.vercel.app/](https://onlinepizzadeliverystore.vercel.app/)
