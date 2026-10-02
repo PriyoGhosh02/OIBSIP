@@ -8,10 +8,18 @@ const connectDB = async () => {
     return mongoose.connection;
   }
 
-  const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/pizzahub';
+  const uri = process.env.MONGODB_URI;
+
+  if (!uri && (process.env.VERCEL || process.env.NODE_ENV === 'production')) {
+    const errorMsg = 'MONGODB_URI environment variable is missing in Vercel project settings.';
+    console.error(`❌ ${errorMsg}`);
+    throw new Error(errorMsg);
+  }
+
+  const connectionUri = uri || 'mongodb://127.0.0.1:27017/pizzahub';
 
   try {
-    const conn = await mongoose.connect(uri, {
+    const conn = await mongoose.connect(connectionUri, {
       serverSelectionTimeoutMS: 10000,
     });
     isConnected = conn.connections[0].readyState;

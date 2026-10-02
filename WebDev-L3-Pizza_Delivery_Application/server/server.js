@@ -54,8 +54,16 @@ app.use(async (req, res, next) => {
     await connectDB();
     next();
   } catch (err) {
-    console.error('Serverless DB connection error:', err);
-    res.status(500).json({ success: false, message: 'Database connection failed' });
+    console.error('Serverless DB connection error:', err.message);
+    res.status(500).json({
+      success: false,
+      message: 'Database connection failed',
+      error: err.message,
+      hasMongoUri: !!process.env.MONGODB_URI,
+      tip: !process.env.MONGODB_URI
+        ? 'MONGODB_URI is not set in Vercel Environment Variables. Add it in Vercel Settings > Environment Variables, then click Redeploy.'
+        : 'Check MongoDB Atlas > Network Access. Ensure 0.0.0.0/0 (Allow access from anywhere) is active.',
+    });
   }
 });
 
